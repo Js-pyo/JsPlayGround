@@ -102,7 +102,7 @@
                     <div class="bg-slate-900/80 border border-slate-700/60 rounded-2xl p-4 flex-1 min-w-[240px]">
                         <span class="text-xs text-slate-400 block mb-1">서버 접속 주소 (IP)</span>
                         <div class="flex items-center justify-between">
-                            <code id="server-ip" class="text-emerald-400 font-mono font-bold text-sm sm:text-base">jspyo.duckdns.org:24642</code>
+                            <code id="server-ip" class="text-emerald-400 font-mono font-bold text-sm sm:text-base">jspyo.duckdns.org:25565</code>
                             <button onclick="copyIP()" class="text-slate-400 hover:text-white text-xs bg-slate-800 px-2.5 py-1.5 rounded-lg transition">복사</button>
                         </div>
                     </div>
@@ -351,7 +351,7 @@
     <script>
         // 서버 상태 실시간 데이터 불러오기
         async function checkServerStatus() {
-            const serverIP = "jspyo.duckdns.org:24642";
+            const serverIP = "jspyo.duckdns.org:25565";
             const badge = document.getElementById('server-status-badge');
             const dot = document.getElementById('status-dot');
             const text = document.getElementById('status-text');
@@ -380,7 +380,7 @@
 
         // IP 복사
         function copyIP() {
-            navigator.clipboard.writeText("jspyo.duckdns.org:24642").then(() => {
+            navigator.clipboard.writeText("jspyo.duckdns.org:25565").then(() => {
                 const toast = document.getElementById('toast');
                 toast.classList.remove('translate-y-20', 'opacity-0');
                 setTimeout(() => toast.classList.add('translate-y-20', 'opacity-0'), 2500);
