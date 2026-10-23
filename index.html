@@ -125,7 +125,7 @@
                     ✨ 서버 컨텐츠 소개
                 </button>
                 <button onclick="switchTab('curseforge')" id="btn-curseforge" class="flex-1 py-2.5 rounded-xl text-xs sm:text-sm font-jua tracking-wide transition text-slate-400 hover:text-white">
-                    방법 A: CurseForge 접속 (추천)
+                    방법 A: CurseForge 접속
                 </button>
                 <button onclick="switchTab('manual')" id="btn-manual" class="flex-1 py-2.5 rounded-xl text-xs sm:text-sm font-jua tracking-wide transition text-slate-400 hover:text-white">
                     방법 B: 수동 설치
@@ -250,4 +250,164 @@
             <!-- TAB 3: 수동 설치 방식 가이드 -->
             <div id="tab-manual" class="bg-cardbg/90 backdrop-blur border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-8 hidden">
                 <div class="space-y-4">
-                    <div class="flex items-center space-x-
+                    <div class="flex items-center space-x-3">
+                        <div class="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold">1</div>
+                        <h4 class="font-jua text-xl text-slate-100">Java 17 (JDK 17 LTS) 설치</h4>
+                    </div>
+                    <p class="text-sm text-slate-300 pl-11">
+                        Adoptium 사이트에서 <span class="text-amber-400 font-bold">JDK 17 - LTS</span>를 선택하고 Windows 항목 옆의 다운로드 버튼을 눌러 설치합니다.
+                    </p>
+                    <div class="pl-11 space-y-3">
+                        <a href="https://adoptium.net/temurin/releases/?version=17" target="_blank" class="inline-flex items-center space-x-2 bg-slate-800 hover:bg-slate-700 text-white px-4 py-2 rounded-xl text-xs font-semibold border border-slate-700 transition">
+                            <i class="fa-brands fa-java text-amber-400"></i>
+                            <span>Java 17 공식 다운로드</span>
+                        </a>
+                        <img src="./images/tutorial_manual_1.png" alt="Java 17 선택 안내" class="w-full rounded-2xl border border-slate-800 bg-slate-900">
+                    </div>
+                </div>
+
+                <hr class="border-slate-800">
+
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold">2</div>
+                        <h4 class="font-jua text-xl text-slate-100">Forge 47.4.28 설치 (광고 5초 주의!)</h4>
+                    </div>
+                    <p class="text-sm text-slate-300 pl-11">
+                        Forge 설치 클릭 시 나오는 광고 페이지에서 상단 우측 <span class="text-amber-400 font-bold">5초 대기 후 SKIP</span> 버튼을 눌러야 진짜 Forge 설치 파일이 다운로드됩니다.
+                    </p>
+                    <div class="pl-11 space-y-3">
+                        <a href="https://files.minecraftforge.net/net/minecraftforge/forge/index_1.20.1.html" target="_blank" class="inline-flex items-center space-x-2 bg-slate-800 hover:bg-slate-700 text-white px-4 py-2 rounded-xl text-xs font-semibold border border-slate-700 transition">
+                            <i class="fa-solid fa-hammer text-amber-400"></i>
+                            <span>Forge 47.4.28 다운로드</span>
+                        </a>
+                        <img src="./images/tutorial_manual_2.png" alt="Forge 광고 5초 안내" class="w-full rounded-2xl border border-slate-800 bg-slate-900">
+                    </div>
+                </div>
+
+                <hr class="border-slate-800">
+
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold">3</div>
+                        <h4 class="font-jua text-xl text-slate-100">Install Client 및 모드 파일 수동 적용</h4>
+                    </div>
+                    <p class="text-sm text-slate-300 pl-11 leading-relaxed">
+                        1. Forge 실행창에서 <span class="text-emerald-400 font-bold">Install client</span>를 선택하고 마인크래프트 경로가 맞는지 확인 후 OK를 누릅니다.<br>
+                        2. 아래 모드 파일 모음을 받아서 <code class="bg-slate-900 px-2 py-0.5 rounded text-emerald-400 font-mono">%appdata%\.minecraft\mods</code> 폴더에 넣어줍니다.
+                    </p>
+                    <div class="pl-11 space-y-3">
+                        <a href="https://drive.google.com/file/d/1EOwfbo7AWpU6w0lRM6yg3kzU2grBlVk2/view?usp=drive_link" target="_blank" class="inline-flex items-center space-x-2 bg-sky-600 hover:bg-sky-500 text-white px-4 py-2.5 rounded-xl text-xs font-semibold shadow-lg shadow-sky-600/20 transition">
+                            <i class="fa-solid fa-download"></i>
+                            <span>수동 모드 파일 모음 (구글 드라이브)</span>
+                        </a>
+                        <img src="./images/tutorial_manual_3.png" alt="Install Client 선택 안내" class="w-full rounded-2xl border border-slate-800 bg-slate-900">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 서버 포함 모드 리스트 섹션 -->
+        <section class="bg-cardbg/90 backdrop-blur border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-4">
+            <h3 class="font-jua text-xl text-emerald-400 flex items-center space-x-2">
+                <i class="fa-solid fa-puzzle-piece"></i>
+                <span>적용된 모드 리스트 (총 18개)</span>
+            </h3>
+            <div class="flex flex-wrap gap-2 pt-2">
+                <span class="bg-slate-900/80 border border-slate-700/60 text-slate-200 px-3 py-1.5 rounded-xl text-xs font-medium">Adminshop Overhauled</span>
+                <span class="bg-slate-900/80 border border-slate-700/60 text-slate-200 px-3 py-1.5 rounded-xl text-xs font-medium">Architectury API</span>
+                <span class="bg-slate-900/80 border border-slate-700/60 text-slate-200 px-3 py-1.5 rounded-xl text-xs font-medium">Client Sort</span>
+                <span class="bg-slate-900/80 border border-slate-700/60 text-slate-200 px-3 py-1.5 rounded-xl text-xs font-medium">Cloth Config API</span>
+                <span class="bg-slate-900/80 border border-slate-700/60 text-slate-200 px-3 py-1.5 rounded-xl text-xs font-medium">Complementary Shaders - Unbound</span>
+                <span class="bg-slate-900/80 border border-slate-700/60 text-slate-200 px-3 py-1.5 rounded-xl text-xs font-medium">Embeddium</span>
+                <span class="bg-slate-900/80 border border-slate-700/60 text-slate-200 px-3 py-1.5 rounded-xl text-xs font-medium">Embeddium Extra</span>
+                <span class="bg-slate-900/80 border border-slate-700/60 text-slate-200 px-3 py-1.5 rounded-xl text-xs font-medium">FTB Library</span>
+                <span class="bg-slate-900/80 border border-slate-700/60 text-slate-200 px-3 py-1.5 rounded-xl text-xs font-medium">FTB Teams</span>
+                <span class="bg-slate-900/80 border border-slate-700/60 text-slate-200 px-3 py-1.5 rounded-xl text-xs font-medium">Jauml</span>
+                <span class="bg-slate-900/80 border border-slate-700/60 text-slate-200 px-3 py-1.5 rounded-xl text-xs font-medium">Journeymap</span>
+                <span class="bg-slate-900/80 border border-slate-700/60 text-slate-200 px-3 py-1.5 rounded-xl text-xs font-medium">Just Enough Items (JEI)</span>
+                <span class="bg-slate-900/80 border border-slate-700/60 text-slate-200 px-3 py-1.5 rounded-xl text-xs font-medium">KubeJS</span>
+                <span class="bg-slate-900/80 border border-slate-700/60 text-slate-200 px-3 py-1.5 rounded-xl text-xs font-medium">Oculus</span>
+                <span class="bg-slate-900/80 border border-slate-700/60 text-slate-200 px-3 py-1.5 rounded-xl text-xs font-medium">Patchouli</span>
+                <span class="bg-slate-900/80 border border-slate-700/60 text-slate-200 px-3 py-1.5 rounded-xl text-xs font-medium">Rhino</span>
+                <span class="bg-slate-900/80 border border-slate-700/60 text-slate-200 px-3 py-1.5 rounded-xl text-xs font-medium">RPG Mob Leveling System</span>
+                <span class="bg-slate-900/80 border border-slate-700/60 text-slate-200 px-3 py-1.5 rounded-xl text-xs font-medium">Union's Upgrade Scrolls Port</span>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="border-t border-slate-800 bg-slate-900/80 py-6 mt-12 text-center text-xs text-slate-500">
+        <p>종선의 놀이터 마인크래프트 서버 안내 페이지</p>
+    </footer>
+
+    <!-- 알림 토스트 -->
+    <div id="toast" class="fixed bottom-5 right-5 bg-emerald-600 text-white px-4 py-3 rounded-2xl shadow-2xl transform translate-y-20 opacity-0 transition-all duration-300 flex items-center space-x-2 z-50 text-sm font-semibold">
+        <i class="fa-solid fa-check-circle"></i>
+        <span>서버 주소가 클립보드에 복사되었습니다!</span>
+    </div>
+
+    <!-- 스크립트 -->
+    <script>
+        // 서버 상태 실시간 데이터 불러오기
+        async function checkServerStatus() {
+            const serverIP = "jspyo.duckdns.org:24642";
+            const badge = document.getElementById('server-status-badge');
+            const dot = document.getElementById('status-dot');
+            const text = document.getElementById('status-text');
+
+            try {
+                const response = await fetch(`https://api.mcsrvstat.us/3/${serverIP}`);
+                const data = await response.json();
+
+                if (data.online) {
+                    badge.className = "inline-flex items-center space-x-2 bg-emerald-500/10 text-emerald-400 px-3 py-1 rounded-full text-xs font-semibold border border-emerald-500/20";
+                    dot.className = "w-2 h-2 rounded-full bg-emerald-500 animate-pulse";
+                    text.innerText = `서버 켜짐 (접속자: ${data.players.online}명)`;
+                } else {
+                    badge.className = "inline-flex items-center space-x-2 bg-rose-500/10 text-rose-400 px-3 py-1 rounded-full text-xs font-semibold border border-rose-500/20";
+                    dot.className = "w-2 h-2 rounded-full bg-rose-500";
+                    text.innerText = "서버 닫힘";
+                }
+            } catch (e) {
+                badge.className = "inline-flex items-center space-x-2 bg-amber-500/10 text-amber-400 px-3 py-1 rounded-full text-xs font-semibold border border-amber-500/20";
+                dot.className = "w-2 h-2 rounded-full bg-amber-500";
+                text.innerText = "서버 상태 확인 불가";
+            }
+        }
+
+        checkServerStatus();
+
+        // IP 복사
+        function copyIP() {
+            navigator.clipboard.writeText("jspyo.duckdns.org:24642").then(() => {
+                const toast = document.getElementById('toast');
+                toast.classList.remove('translate-y-20', 'opacity-0');
+                setTimeout(() => toast.classList.add('translate-y-20', 'opacity-0'), 2500);
+            });
+        }
+
+        // 탭 전환 함수
+        function switchTab(type) {
+            const btnFeatures = document.getElementById('btn-features');
+            const btnCurse = document.getElementById('btn-curseforge');
+            const btnManual = document.getElementById('btn-manual');
+            
+            const tabFeatures = document.getElementById('tab-features');
+            const tabCurse = document.getElementById('tab-curseforge');
+            const tabManual = document.getElementById('tab-manual');
+
+            const activeClass = "flex-1 py-2.5 rounded-xl text-xs sm:text-sm font-jua tracking-wide transition bg-emerald-600 text-white shadow";
+            const inactiveClass = "flex-1 py-2.5 rounded-xl text-xs sm:text-sm font-jua tracking-wide transition text-slate-400 hover:text-white";
+
+            btnFeatures.className = (type === 'features') ? activeClass : inactiveClass;
+            btnCurse.className = (type === 'curseforge') ? activeClass : inactiveClass;
+            btnManual.className = (type === 'manual') ? activeClass : inactiveClass;
+
+            tabFeatures.classList.toggle('hidden', type !== 'features');
+            tabCurse.classList.toggle('hidden', type !== 'curseforge');
+            tabManual.classList.toggle('hidden', type !== 'manual');
+        }
+    </script>
+</body>
+</html>
