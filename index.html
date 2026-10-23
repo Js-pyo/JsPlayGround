@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ko" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>종선의 놀이터 - 마인크래프트 서버 안내</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkbg: '#0f172a',
+                        cardbg: '#1e293b',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Pretendard 본문 폰트 */
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+        
+        /* 배달의민족 주아체 (fonts 폴더) */
+        @font-face {
+            font-family: 'BMJUA';
+            src: url('./fonts/BMJUA_ttf.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            font-family: 'Pretendard', sans-serif;
+        }
+
+        /* 주아체 클래스 (제목/강조용) */
+        .font-jua {
+            font-family: 'BMJUA', 'Pretendard', sans-serif;
+        }
+
+        /* 은은한 배경 이미지 오버레이 (images 폴더 경로 적용) */
+        .bg-custom-overlay {
+            background: linear-gradient(to bottom, rgba(15, 23, 42, 0.88), rgba(15, 23, 42, 0.96)), url('./images/background.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+<body class="bg-darkbg bg-custom-overlay text-slate-100 min-h-screen flex flex-col justify-between selection:bg-emerald-500 selection:text-white">
+
+    <!-- 상단 헤더 -->
+    <header class="border-b border-slate-800/80 bg-slate-900/80 backdrop-blur sticky top-0 z-40">
+        <div class="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <!-- 로고 이미지 -->
+                <img src="./images/logo.png" alt="종선의놀이터 로고" class="h-10 sm:h-12 w-auto object-contain">
+                <span class="text-xs text-slate-400 hidden sm:inline-block border-l border-slate-700 pl-3">v1.20.1 Forge</span>
+            </div>
+            
+            <div class="flex items-center space-x-2">
+                <!-- 디스코드 버튼 -->
+                <a href="https://discord.gg/YvS2889TBK" target="_blank" rel="noopener noreferrer" class="bg-indigo-600/30 hover:bg-indigo-600/50 border border-indigo-500/40 text-indigo-200 px-3 py-1.5 rounded-xl text-xs sm:text-sm font-semibold transition flex items-center space-x-2">
+                    <img src="./images/discord.png" alt="디스코드" class="w-5 h-5 rounded-full object-cover">
+                    <span class="hidden sm:inline">디스코드</span>
+                </a>
+                
+                <!-- 서버 주소 복사 버튼 -->
+                <button onclick="copyIP()" class="bg-emerald-600 hover:bg-emerald-500 text-white px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold transition flex items-center space-x-1.5 shadow-lg shadow-emerald-600/30">
+                    <i class="fa-solid fa-copy"></i>
+                    <span>IP 복사</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 메인 컨테이너 -->
+    <main class="max-w-4xl mx-auto px-4 py-8 w-full flex-grow space-y-8">
+        
+        <!-- 서버 정보 카드 -->
+        <section class="bg-cardbg/90 backdrop-blur border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl relative overflow-hidden">
+            <div class="relative z-10 space-y-4">
+                <!-- 실시간 서버 상태 -->
+                <div id="server-status-badge" class="inline-flex items-center space-x-2 bg-slate-800 text-slate-400 px-3 py-1 rounded-full text-xs font-semibold border border-slate-700">
+                    <span id="status-dot" class="w-2 h-2 rounded-full bg-slate-500"></span>
+                    <span id="status-text">서버 상태 확인 중...</span>
+                </div>
+
+                <h2 class="font-jua text-2xl sm:text-4xl text-emerald-400 tracking-wide">
+                    친구들과 함께하는 야생 & 모드 서버!
+                </h2>
+                <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                    컴맹이라도 걱정 마세요! 아래 가이드를 따라 오시면 클릭 몇 번으로 편하게 접속할 수 있습니다.
+                </p>
+                
+                <div class="pt-2 flex flex-wrap gap-3">
+                    <div class="bg-slate-900/80 border border-slate-700/60 rounded-2xl p-4 flex-1 min-w-[240px]">
+                        <span class="text-xs text-slate-400 block mb-1">서버 접속 주소 (IP)</span>
+                        <div class="flex items-center justify-between">
+                            <code id="server-ip" class="text-emerald-400 font-mono font-bold text-sm sm:text-base">jspyo.duckdns.org:24642</code>
+                            <button onclick="copyIP()" class="text-slate-400 hover:text-white text-xs bg-slate-800 px-2.5 py-1.5 rounded-lg transition">복사</button>
+                        </div>
+                    </div>
+                    <div class="bg-slate-900/80 border border-slate-700/60 rounded-2xl p-4 flex-1 min-w-[240px]">
+                        <span class="text-xs text-slate-400 block mb-1">버전 / 모드 로더</span>
+                        <div class="text-slate-100 font-semibold text-sm sm:text-base flex items-center space-x-2">
+                            <span>v1.20.1</span>
+                            <span class="text-slate-600">|</span>
+                            <span class="text-amber-400">Forge 47.4.28</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3개 탭 구성 (서버 특징 / CurseForge 설치 / 수동 설치) -->
+        <section class="space-y-4">
+            <div class="flex space-x-2 bg-slate-900/90 p-1.5 rounded-2xl border border-slate-800">
+                <button onclick="switchTab('features')" id="btn-features" class="flex-1 py-2.5 rounded-xl text-xs sm:text-sm font-jua tracking-wide transition bg-emerald-600 text-white shadow">
+                    ✨ 서버 컨텐츠 소개
+                </button>
+                <button onclick="switchTab('curseforge')" id="btn-curseforge" class="flex-1 py-2.5 rounded-xl text-xs sm:text-sm font-jua tracking-wide transition text-slate-400 hover:text-white">
+                    방법 A: CurseForge 접속 (추천)
+                </button>
+                <button onclick="switchTab('manual')" id="btn-manual" class="flex-1 py-2.5 rounded-xl text-xs sm:text-sm font-jua tracking-wide transition text-slate-400 hover:text-white">
+                    방법 B: 수동 설치
+                </button>
+            </div>
+
+            <!-- TAB 1: 서버 컨텐츠 소개 -->
+            <div id="tab-features" class="bg-cardbg/90 backdrop-blur border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-8">
+                <h3 class="font-jua text-2xl text-emerald-400 flex items-center space-x-2 border-b border-slate-800 pb-4">
+                    <i class="fa-solid fa-gamepad"></i>
+                    <span>종선의 놀이터 즐길거리</span>
+                </h3>
+
+                <!-- 컨텐츠 1: 어드민 상점 & 조합법 -->
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-2">
+                        <i class="fa-solid fa-shop text-amber-400 text-lg"></i>
+                        <h4 class="font-jua text-xl text-slate-100">1. 어드민 상점 시스템</h4>
+                    </div>
+                    <p class="text-sm text-slate-300 leading-relaxed">
+                        다양한 물건을 판매하여 돈을 벌 수 있습니다. 상점 블록을 직접 조합해서 내 기지에 배치해 보세요!
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+                        <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-3 space-y-2">
+                            <span class="text-xs text-amber-400 font-semibold block">🛒 상점 이용 화면</span>
+                            <img src="./images/aboutmods_adminshop.png" alt="상점 이용 화면" class="w-full rounded-xl object-cover border border-slate-800">
+                        </div>
+                        <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-3 space-y-2">
+                            <span class="text-xs text-emerald-400 font-semibold block">🛠️ 상점 블록 조합법</span>
+                            <img src="./images/shop_recipe.png" alt="상점 조합법" class="w-full rounded-xl object-contain bg-slate-950/50 p-2 border border-slate-800">
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="border-slate-800">
+
+                <!-- 컨텐츠 2: 강화 스크롤 -->
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-2">
+                        <i class="fa-solid fa-scroll text-sky-400 text-lg"></i>
+                        <h4 class="font-jua text-xl text-slate-100">2. 장비 강화 주문서</h4>
+                    </div>
+                    <p class="text-sm text-slate-300 leading-relaxed">
+                        상점에서 구매할 수 있는 스크롤을 사용하면 랜덤하게 다양한 능력을 가진 강화 주문서를 획득할 수 있습니다!
+                    </p>
+                    <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-3">
+                        <img src="./images/aboutmods_scrolls.png" alt="강화 스크롤 시스템" class="w-full rounded-xl object-cover border border-slate-800">
+                    </div>
+                </div>
+
+                <hr class="border-slate-800">
+
+                <!-- 컨텐츠 3: JEI 모드 & 단축키 -->
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-2">
+                        <i class="fa-solid fa-book-open text-purple-400 text-lg"></i>
+                        <h4 class="font-jua text-xl text-slate-100">3. JEI (조합법 검색 모드) 이용 팁</h4>
+                    </div>
+                    <p class="text-sm text-slate-300 leading-relaxed">
+                        화면 우측에서 모든 아이템의 조합법을 손쉽게 검색할 수 있습니다. 오른쪽 아이템 창이 거슬릴 때는 <code class="bg-slate-800 text-amber-300 px-2 py-0.5 rounded border border-slate-700 font-bold">Ctrl + O</code> 단축키를 눌러 켜고 끌 수 있습니다.
+                    </p>
+                    <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-3">
+                        <img src="./images/aboutmods_jei.png" alt="JEI 모드 화면" class="w-full rounded-xl object-cover border border-slate-800">
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 2: CurseForge 방식 가이드 -->
+            <div id="tab-curseforge" class="bg-cardbg/90 backdrop-blur border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-8 hidden">
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold">1</div>
+                        <h4 class="font-jua text-xl text-slate-100">CurseForge (Standalone 버전) 설치</h4>
+                    </div>
+                    <p class="text-sm text-slate-300 pl-11">
+                        CurseForge 다운로드 페이지에서 Overwolf 포함 버전이 아닌 <span class="text-amber-400 font-bold">Standalone</span> 버튼을 눌러 다운로드 및 설치해 주세요.
+                    </p>
+                    <div class="pl-11 space-y-3">
+                        <a href="https://www.curseforge.com/download" target="_blank" class="inline-flex items-center space-x-2 bg-slate-800 hover:bg-slate-700 text-white px-4 py-2 rounded-xl text-xs font-semibold border border-slate-700 transition">
+                            <i class="fa-solid fa-download text-amber-400"></i>
+                            <span>CurseForge 공식 다운로드 페이지 이동</span>
+                        </a>
+                        <img src="./images/tutorial_curseforge_1.png" alt="CurseForge Standalone 설치 안내" class="w-full rounded-2xl border border-slate-800 bg-slate-900">
+                    </div>
+                </div>
+
+                <hr class="border-slate-800">
+
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold">2</div>
+                        <h4 class="font-jua text-xl text-slate-100">서버 프로필(.zip) 다운로드 및 Import</h4>
+                    </div>
+                    <p class="text-sm text-slate-300 pl-11">
+                        아래 버튼에서 서버 프로필 zip 파일을 다운로드받은 뒤, CurseForge의 <span class="text-emerald-400 font-bold">Import</span> 버튼을 누릅니다.
+                    </p>
+                    <div class="pl-11 space-y-3">
+                        <a href="https://drive.google.com/file/d/1ddNxARFIOTthpAdjXqC7XfZGY1XONOhA/view?usp=drive_link" target="_blank" class="inline-flex items-center space-x-2 bg-sky-600 hover:bg-sky-500 text-white px-4 py-2.5 rounded-xl text-xs font-semibold shadow-lg shadow-sky-600/20 transition">
+                            <i class="fa-solid fa-file-zipper"></i>
+                            <span>서버 프로필(.zip) 다운로드 (구글 드라이브)</span>
+                        </a>
+                        <img src="./images/tutorial_curseforge_2.png" alt="Import 버튼 위치 안내" class="w-full rounded-2xl border border-slate-800 bg-slate-900">
+                    </div>
+                </div>
+
+                <hr class="border-slate-800">
+
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold">3</div>
+                        <h4 class="font-jua text-xl text-slate-100">Choose .zip file 선택 후 불러오기</h4>
+                    </div>
+                    <p class="text-sm text-slate-300 pl-11">
+                        Profile code 입력창이 아닌, <span class="text-amber-400 font-bold">Choose .zip file</span> 버튼을 눌러 다운받은 zip 파일을 선택해야 모든 모드가 자동으로 설치됩니다.
+                    </p>
+                    <div class="pl-11">
+                        <img src="./images/tutorial_curseforge_3.png" alt="Choose zip file 선택 안내" class="w-full rounded-2xl border border-slate-800 bg-slate-900">
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 3: 수동 설치 방식 가이드 -->
+            <div id="tab-manual" class="bg-cardbg/90 backdrop-blur border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-8 hidden">
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-
